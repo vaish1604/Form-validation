@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            h2{
+                color:darkslategrey;
+            }
+            input[type=text],input[type=password],input[type=email],select {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+              }
+              button[type=submit]{
+                  padding: 10px;
+                  border: 1px solid #ccc;
+                  border-radius: 2px;
+                  background-color: coral;
+                  color:aliceblue
+              }
+              button[type=submit]:hover{
+                  background-color: chocolate;
+              }
+              table{
+                  color:darkslategray;
+              }
+        </style>
+        <script type="text/javascript">
+            function validate(){
+                var e=document.getElementById("email");
+                var ce=document.getElementById("cemail");
+                var zip=document.getElementById("zip");
+                var p=document.getElementById("pass");
+                var cp=document.getElementById("cpass");
+                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                var zipformat=/^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$/;
+                if(!e.value.match(mailformat)){
+                    e.style.borderBlockColor="red";
+                    document.getElementById("eer").innerHTML="Please use a valid email address";
+                }
+                if(e.value!==ce.value){
+                    ce.style.borderBlockColor="red";
+                    document.getElementById("ceer").innerHTML="Email does not match";
+                }
+                if(!zip.value.match(mailformat)){
+                    zip.style.borderBlockColor="red";
+                    document.getElementById("zer").innerHTML="Please provide a valid Zip Code";
+                }
+                if(p.value.length<6 || p.value.length>16){
+                    p.style.borderBlockColor="red";
+                    document.getElementById("per").innerHTML="Your password must be between 0-16 characters long.";
+                }
+                if(cp.value!==p.value){
+                    cp.style.borderBlockColor="red";
+                    document.getElementById("cper").innerHTML="This does not match the password entered above.";
+                }
+                }
+        </script>
+    </head>
+    <body>
+        <h2>create a new account</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Your Email: </th>
+                    <th><input type="email" id="email" name="email"><b><span id="eer" style="color:red"></span></b></th>
+                </tr>
+                <tr>
+                    <th>Confirm Email: </th>
+                    <th><input type="email" id="cemail" name="cemail"><b><span id="ceer" style="color:red"></span></b></th>
+                </tr>
+                <tr>
+                    <th>Country: </th>
+                    <th><select>
+                            <option value="0">Country:</option>
+                            <option value="1">Usa</option>
+                            <option value="2">India</option>
+                            <option value="3">Canada</option>
+                        </select></th>
+                </tr>
+                <tr>
+                    <th>Zip Code: </th>
+                    <th><input type="text" id="zip" name="zip"><b><span id="zer" style="color:red"></span></b></th>
+                </tr>
+                <tr>
+                    <th>Password: </th>
+                    <th><input type="password" id="pass" name="pass"><b><span id="per" style="color:red"></span></b></th>
+                </tr>
+                <tr>
+                    <th>Confirm Password: </th>
+                    <th><input type="password" id="cpass" name="cpass"><b><span id="cper" style="color:red"></span></b></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th><input type="checkbox" id="con" name="con"><small>Yes, I agree to the</small> <a href="https://www.tutorialspoint.com/How-to-Insert-Hyperlink-in-HTML-Page"><small>Terms of Use</small></a>
+                    </th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th align="left"><button type="submit" onclick="validate()"><b>Sign Up</b></button></th>
+                </tr>
+            </thead>
+        </table>
+    </body>
+</html>
